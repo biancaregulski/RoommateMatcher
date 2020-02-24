@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <sstream> 
+#include <cstdlib>
 
 enum level {
     low = 0,
@@ -49,9 +51,20 @@ public:
         tmp->showers = (time)(showers - 1);
         tmp->smoker = smoker - 1;
         tmp->id = "";
-        tmp->id += std::tolower(firstName[0]);
+        tmp->id += std::tolower(firstName[0]);                // id starts with first and last initial
         tmp->id += std::tolower(lastName[0]);
-        tmp->id += "1";
+
+        int idNum = 0;
+        std::string idNumString;
+        do {
+            std::stringstream ss;              
+            ss << ++idNum;                                    // increment idNum and convert to string
+            idNumString = ss.str();
+            std::cout << tmp->id + idNumString << '\n';
+
+        } while (searchNode(tmp->id + idNumString) != NULL);
+
+        tmp->id += idNumString;                               // then append id number to initials
 
         tmp->next = NULL;
 

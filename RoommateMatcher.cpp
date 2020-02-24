@@ -1,10 +1,10 @@
 // TODO: make database where you can query by name, preferences, etc.
-
+// TODO: custom user ids
+// TODO: algorithm
 #include "ResidentList.cpp"
 
 void showMenu();
 int intErrorChecking(int rangeMax);
-char charErrorChecking();
 
 int main() {
     ResidentList residents;
