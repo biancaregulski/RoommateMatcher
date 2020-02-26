@@ -3,6 +3,8 @@
 #include <limits>
 #include <sstream> 
 #include <cstdlib>
+#include <regex>
+
 
 enum level {
     low = 0,
@@ -10,7 +12,7 @@ enum level {
     high = 2
 };
 
-enum time {
+enum timePeriod {
     morning = 0,
     evening = 1,
     noPreference = 2
@@ -22,7 +24,7 @@ struct ResidentNode {
     std::string firstName, lastName;
     level temperature, cleanliness, visitors;
     int smoker;
-    time showers;
+    timePeriod showers;
 
     ResidentNode* next;
 };
@@ -48,7 +50,7 @@ public:
         tmp->temperature = (level)(temperature - 1);
         tmp->cleanliness = (level)(cleanliness - 1);
         tmp->visitors = (level)(visitors - 1);
-        tmp->showers = (time)(showers - 1);
+        tmp->showers = (timePeriod)(showers - 1);
         tmp->smoker = smoker - 1;
         tmp->id = "";
         tmp->id += std::tolower(firstName[0]);                // id starts with first and last initial

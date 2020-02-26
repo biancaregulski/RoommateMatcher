@@ -1,9 +1,10 @@
 // TODO: make database where you can query by name, preferences, etc.
-// TODO: custom user ids
 // TODO: algorithm
 #include "ResidentList.cpp"
+#include <boost/algorithm/string/trim.hpp>
 
 void showMenu();
+std::string nameErrorChecking();
 int intErrorChecking(int rangeMax);
 
 int main() {
@@ -25,14 +26,13 @@ int main() {
             case 1:
                 std::cout << "\nFirst Name: ";
                 std::cin.ignore();                              // ignores newline before std::getline
-                std::getline(std::cin, firstName);              // allows names to have spaces
-
+                firstName = nameErrorChecking();
                 std::cout << "Last Name: ";
-                std::getline(std::cin, lastName);
+                lastName = nameErrorChecking();
 
                 std::cout << "\nWhat temperature should your room be?\n"
                           << "1. Cold\n2. Average\n3. Warm\n> ";
-                temperature = intErrorChecking(3);
+                temperature = intErrorChecking(3);                          // checks that 1 =< input >= 3
 
                 std::cout << "\nHow clean is your room?\n"
                           << "1. Tidy\n2. Average\n3. Messy\n> ";
@@ -106,6 +106,9 @@ int main() {
                 }
                 showMenu();
                 break;
+            case 5:
+                // pair algorithm
+                break;
             case 6:
                 exit = true;
                 break;
@@ -113,6 +116,34 @@ int main() {
                 std::cout << "Invalid selection. Try again.\n";
         }
     } while (exit == false);
+}
+
+std::string nameErrorChecking() {
+    std::string name;
+    char c;
+    bool charFound = false;
+
+    INPUT: while (std::getline(std::cin, name)) {                
+        for (int i = 0; i < name.length(); i++) {
+            c = name[i];         
+            if (!std::isalpha(c) && c != ' ') {
+                std::cout << "Name can only consist of letters and spaces\n> ";
+                goto INPUT;
+            }
+            else if (std::isalpha(c)) {
+                charFound = true;
+            }
+        }
+        if (charFound) {
+            break;                          // if find string without errors, leave while loop
+        }
+        else {
+            std::cout << "Names must have at least one letter\n> ";     // if string consists of only spaces, continue while loop
+        }
+    }
+    name[0] = toupper(name[0]);         // make first letter of name uppercase
+    boost::algorithm::trim(name);       // gets rid of trailing/pending spaces
+    return name;
 }
 
 int intErrorChecking(int rangeMax) {
