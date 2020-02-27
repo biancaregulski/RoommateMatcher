@@ -6,7 +6,7 @@
 #include <regex>
 
 
-enum level {
+/*enum level {
     low = 0,
     moderate = 1,
     high = 2
@@ -16,16 +16,16 @@ enum timePeriod {
     morning = 0,
     evening = 1,
     noPreference = 2
-};
+};*/
 
 struct ResidentNode {
     std::string id;
-    ResidentNode* roommate = NULL;
     std::string firstName, lastName;
-    level temperature, cleanliness, visitors;
+    int temperature, cleanliness, visitors;
     int smoker;
-    timePeriod showers;
+    int showers;
 
+    ResidentNode* roommate = NULL;
     ResidentNode* next;
 };
 
@@ -47,10 +47,10 @@ public:
         // tmp->roommate = roommate;
         tmp->firstName = firstName;
         tmp->lastName = lastName;
-        tmp->temperature = (level)(temperature - 1);
-        tmp->cleanliness = (level)(cleanliness - 1);
-        tmp->visitors = (level)(visitors - 1);
-        tmp->showers = (timePeriod)(showers - 1);
+        tmp->temperature = (temperature - 1);
+        tmp->cleanliness = (cleanliness - 1);
+        tmp->visitors = (visitors - 1);
+        tmp->showers = (showers - 1);
         tmp->smoker = smoker - 1;
         tmp->id = "";
         tmp->id += std::tolower(firstName[0]);                // id starts with first and last initial

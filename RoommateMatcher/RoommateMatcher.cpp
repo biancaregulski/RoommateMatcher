@@ -1,6 +1,7 @@
 // TODO: make database where you can query by name, preferences, etc.
 // TODO: algorithm
 #include "ResidentList.cpp"
+#include "ResidentDatabase.cpp"
 #include <boost/algorithm/string/trim.hpp>
 
 void showMenu();
@@ -8,6 +9,12 @@ std::string nameErrorChecking();
 int intErrorChecking(int rangeMax);
 
 int main() {
+
+    const char* dir = "STUDENTS.db";      // TODO: change?
+    sqlite3* DB;
+    createDB(dir);
+    createTable(dir);
+
     ResidentList residents;
     ResidentNode* selectedResident;
     bool exit = false;
@@ -17,7 +24,6 @@ int main() {
     int smoker;
 
     showMenu();
-
 
     do {
         std::cout << "\nSelection: ";
@@ -124,7 +130,7 @@ std::string nameErrorChecking() {
     bool charFound = false;
 
     INPUT: while (std::getline(std::cin, name)) {                
-        for (int i = 0; i < name.length(); i++) {
+        for (size_t i = 0; i < name.length(); i++) {
             c = name[i];         
             if (!std::isalpha(c) && c != ' ') {
                 std::cout << "Name can only consist of letters and spaces\n> ";
