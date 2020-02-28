@@ -1,9 +1,8 @@
-#include <iostream>
 #include <string>
 #include <limits>
-#include <sstream> 
 #include <cstdlib>
 #include <regex>
+#include "ResidentDatabase.cpp"
 
 
 /*enum level {
@@ -44,7 +43,7 @@ public:
     std::string addResident(std::string firstName, std::string lastName, int temperature,
         int cleanliness, int visitors, int showers, int smoker) {
         ResidentNode* tmp = new ResidentNode;
-        // tmp->roommate = roommate;
+        tmp->roommate = NULL;
         tmp->firstName = firstName;
         tmp->lastName = lastName;
         tmp->temperature = (temperature - 1);
@@ -59,9 +58,7 @@ public:
         int idNum = 0;
         std::string idNumString;
         do {
-            std::stringstream ss;              
-            ss << ++idNum;                                    // increment idNum and convert to string
-            idNumString = ss.str();
+            idNumString = intToString(++idNum);                             // increment idNum and convert to string
             std::cout << tmp->id + idNumString << '\n';
 
         } while (searchNode(tmp->id + idNumString) != NULL);

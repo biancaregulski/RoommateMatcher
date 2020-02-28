@@ -1,7 +1,6 @@
 // TODO: make database where you can query by name, preferences, etc.
 // TODO: algorithm
 #include "ResidentList.cpp"
-#include "ResidentDatabase.cpp"
 #include <boost/algorithm/string/trim.hpp>
 
 void showMenu();
