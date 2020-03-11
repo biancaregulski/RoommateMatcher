@@ -18,9 +18,6 @@
     <ClCompile Include="RoommateMatcher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ResidentList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\sqlite-amalgamation-3310100\sqlite3.c">
       <Filter>Source Files</Filter>
     </ClCompile>

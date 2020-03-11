@@ -150,7 +150,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\sqlite-amalgamation-3310100\sqlite3.c" />
     <ClCompile Include="ResidentDatabase.cpp" />
-    <ClCompile Include="ResidentList.cpp" />
     <ClCompile Include="RoommateMatcher.cpp" />
   </ItemGroup>
   <ItemGroup>

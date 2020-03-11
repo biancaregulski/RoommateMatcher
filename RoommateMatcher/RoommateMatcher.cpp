@@ -8,10 +8,7 @@ const char* timeNames[3] = { "Mornings", "Afternoons", "No preference" };
 const char* yesNo[2] = { "Yes", "No" };
 
 void showMenu();
-std::string nameErrorChecking();
-int intErrorChecking(int rangeMax);
-void displayResidentInfo(Record row);
-void displayEditMenu(Record row);
+
 std::string getFirstName();
 std::string getLastName();
 int getTemperature();
@@ -19,6 +16,12 @@ int getCleanliness();
 int getVisitors();
 int getShowerTime();
 int getSmoker();
+
+std::string nameErrorChecking();
+int intErrorChecking(int rangeMax);
+void displayResidentInfo(Record row);
+void displayEditMenu(Record row);
+void displayAllResidents(Records records);
 
 int main() {
 
@@ -151,6 +154,10 @@ int main() {
             // pair algorithm
             break;
         case 6:
+            records = selectData(dir, "", "ID, First_Name, Last_Name");
+            displayAllResidents(records);
+            break;
+        case 7:
             exit = true;
             break;
         default:
@@ -244,16 +251,17 @@ int intErrorChecking(int rangeMax) {
 }
 
 void showMenu() {
-    std::cout << "* * * * * * * * * * * * *" << '\n'
-              << "*    Roomate Matcher    *" << '\n'
-              << "*  -------------------  *" << '\n'
-              << "*  1. Add Resident      *" << '\n'
-              << "*  2. Display Resident  *" << '\n'
-              << "*  3. Edit Resident     *" << '\n'
-              << "*  4. Delete Resident   *" << '\n'
-              << "*  5. Pair Residents    *" << '\n'
-              << "*  6. Exit              *" << '\n'
-              << "* * * * * * * * * * * * *" << '\n';
+    std::cout << "* * * * * * * * * * * * * *" << '\n'
+              << "*     Roomate Matcher     *" << '\n'
+              << "*  ---------------------  *" << '\n'
+              << "*  1. Add Resident        *" << '\n'
+              << "*  2. Show Resident Info  *" << '\n'
+              << "*  3. Edit Resident       *" << '\n'
+              << "*  4. Delete Resident     *" << '\n'
+              << "*  5. Pair Residents      *" << '\n'
+              << "*  6. Show All Residents  *" << '\n'
+              << "*  7. Exit                *" << '\n'
+              << "* * * * * * * * * * * * * *" << '\n';
 }
 
 void displayResidentInfo(Record row) {
@@ -284,4 +292,12 @@ void displayEditMenu(Record row) {
         << "\n6. Shower Time: " << timeNames[stringToInt(row.at(7))]
         << "\n7. Smoker: " << yesNo[stringToInt(row.at(8))]
         << "\n8. Cancel";
+}
+
+void displayAllResidents(Records records) {
+    // display id, first name, and last name for all residents
+    for (auto& row : records) {
+        std::cout << "ID: " << std::left << std::setw(10) << row.at(0)
+                  << "Name: " << row.at(1) << ' ' << row.at(2) << "\n";
+    }
 }

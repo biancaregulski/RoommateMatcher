@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <regex>
 #include <sqlite3.h>
+#include <iomanip>
 
 using Record = std::vector<std::string>;
 using Records = std::vector<Record>;
@@ -134,14 +135,17 @@ static bool isEmpty(const char* dir) {
 	sqlite3_finalize(selectstmt);
 }
 
-// id and attribute are optional paramaters. to get count, only call with dir parameter
 static Records selectData(const char* dir, const std::string &id, const std::string &attribute) {
 	Records records;  
 	sqlite3* DB;
 	char* errorMsg;
 	std::string sql;
 	int exit = sqlite3_open(dir, &DB);
-	sql = "SELECT " + attribute + " FROM RESIDENTS WHERE ID = '" + id + "';";
+	sql = "SELECT " + attribute + " FROM RESIDENTS";
+	if (!id.empty()) {
+		sql += " WHERE ID = '" + id + "'";
+	}
+	sql += ";";
 	exit = sqlite3_exec(DB, sql.c_str(),callback, &records, &errorMsg);
 
 	if (exit != SQLITE_OK) {

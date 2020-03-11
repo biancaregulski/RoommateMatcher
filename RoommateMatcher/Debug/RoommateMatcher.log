@@ -1,7 +1,3 @@
-﻿  sqlite3.c
-  ResidentDatabase.cpp
-  ResidentList.cpp
-  RoommateMatcher.cpp
-C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(26,14): warning C4101: 'DB': unreferenced local variable
-  Generating Code...
+﻿  RoommateMatcher.cpp
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(29,14): warning C4101: 'DB': unreferenced local variable
   RoommateMatcher.vcxproj -> C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\Debug\RoommateMatcher.exe
