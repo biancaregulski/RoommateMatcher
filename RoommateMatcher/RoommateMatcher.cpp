@@ -1,4 +1,5 @@
 // TODO: algorithm
+// TODO: when update residentA roommate to residentB, change residentB roommate to residentA
 #include "ResidentDatabase.cpp"
 #include <boost/algorithm/string/trim.hpp>
 
@@ -24,7 +25,6 @@ void displayEditMenu(Record row);
 void displayAllResidents(Records records);
 
 int main() {
-
     const char* dir = "RESIDENTS.db";
     sqlite3* DB;
     createDB(dir);
@@ -67,7 +67,7 @@ int main() {
 
             std::cout << id << '\n';
 
-            roommateId = "None";
+            roommateId = "Unassigned";
             insertData(dir, id, roommateId, firstName, lastName, temperature, cleanliness, visitors, smoker, showerTime);
 
             showMenu();
@@ -146,7 +146,13 @@ int main() {
             std::cout << "\nResident ID: ";
             std::cin >> id;
             deleteData(dir, id);
-            // TODO: if resident has roommate, set roommate's roommate to null
+            // if resident has roommate, set roommate's roommateID to Unassigned
+            records = selectData(dir, id, "Roommate_ID");
+            if (!records.empty()) {
+                for (auto& row : records) {
+                    updateData(dir, row.at(0), "Roommate_ID", "Unassigned");
+                }
+            }
             std::cout << "\n\n";
             showMenu();
             break;
@@ -265,15 +271,8 @@ void showMenu() {
 }
 
 void displayResidentInfo(Record row) {
-
     std::cout << "\nName: " << row.at(2) << ' ' << row.at(3);           // output first and last name
-    std::cout << "\nRoommate: ";
-    //if (row.at(1).empty()) {
-        std::cout << "Unassigned";
-   /* }
-    else {
-        // TODO: retrieve assigned roommate
-    }*/
+    std::cout << "\nRoommate: " << row.at(1);
     std::cout << "\nPreferences"
         << "\n-----------"
         << "\nTemperature: " << levelNames[stringToInt(row.at(4))]
