@@ -7,6 +7,7 @@
 #include <regex>
 #include <sqlite3.h>
 #include <iomanip>
+#include <cmath>
 
 using Record = std::vector<std::string>;
 using Records = std::vector<Record>;
@@ -109,9 +110,6 @@ static int updateData(const char* dir, std::string id, std::string attribute, st
 		std::cerr << "Error: could not update\n";
 		sqlite3_free(errorMsg);
 	}
-	else {
-		std::cout << attribute << " attribute successfully changed.\n";
-	}
 	return 0;
 }
 
@@ -183,16 +181,6 @@ static int deleteData(const char* dir, std::string id) {
 
 	return 0;
 }
-
-// retrieves database contents
-/*static int callback(void* notUsed, int argc, char** argv, char** azColName) {
-	for (int i = 0; i < argc; i++) {
-		std::cout << azColName[i] << ": " << argv[i] << std::endl;
-	}
-	std::cout << std::endl;
-
-	return 0;
-}*/
 
 static std::string intToString(int num) {
 	std::ostringstream ss;

@@ -1,3 +1,12 @@
 ﻿  RoommateMatcher.cpp
-C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(29,14): warning C4101: 'DB': unreferenced local variable
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(34,14): warning C4101: 'DB': unreferenced local variable
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(398,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(417,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(419,62): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(431,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(453,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(459,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(466,39): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(494,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher\RoommateMatcher.cpp(515,23): warning C4018: '<': signed/unsigned mismatch
   RoommateMatcher.vcxproj -> C:\Users\Bianca\Documents\#programs\roomateMatcher\RoommateMatcher\RoommateMatcher\Debug\RoommateMatcher.exe
